@@ -1,4 +1,4 @@
-# 318_othellothon
+# 418_connectathon
 
 Scope: 
 - Make an connect 4  game
@@ -12,6 +12,13 @@ Scope:
   - Must have at least 2 of the following: 
     - based on a shape or pattern of chip, gives a special effect that the player can use on their NEXT turn.
  
+###
+Projects will be judged by staff based upon the following criteria
+- Code quality (how well laid out is code, effective variable and function names
+- Visual quality (how good does it look?)
+- Task tracking - how good is the meistertask tracking - must add daniel.paschal@learningfuze.com to your meistertask
+- Innovation - introduction of new/interesting mechanics / features
+- Git messages and branch naming.
  
 Mystery requirement: 
 - <b>COMING SOON!</b>
