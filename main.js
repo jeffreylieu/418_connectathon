@@ -1,7 +1,7 @@
 $(document).ready(connectFourStuff);
 
 var player1 = null;
-var player2 = null;
+
 
 function connectFourStuff() {
     gameBoardCreate(7);
@@ -46,14 +46,13 @@ function change( switch_button ) {
     }
 }
 
-function playerChange(){
-    switch(playerColor){
-        case player1:
-            //clickhandler to make it red;
-            break;
-        case player2:
-            //clickhandler to make it black;
-            break;
+function playerChange(square){
+    if(player1 == 1){
+        document.getElementById(square).innterHTML = "red";
+        player1 = 0;
+    } else {
+        document.getElementById(square).interHTML = "black";
+        player1 = 1;
     }
 }//something that keeps track of what player it is.
 //look at loop prototype with game board

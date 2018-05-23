@@ -17,14 +17,14 @@ header {
     color: whitesmoke;
 }
 
-<<<<<<< HEAD
+
 .col {
     height: 5%;
     width: 5%;
     background-color: yellow;
     border: 2px solid white;
 }
-=======
+
 #playerSwap {
     box-sizing: border-box;
     display: block;
@@ -34,7 +34,7 @@ header {
     height: 1%;
 }
 
->>>>>>> c68b5260aafd996b35bb79bb5855b3d5b1364450
+
 input {
     background-color: red;
     color: blue;
