@@ -8,6 +8,8 @@ function connectFourStuff() {
 
   function eventListeners() {
 
+
+
   }
 
   // dynamic board creator - enter the size you want for NxN
@@ -41,3 +43,8 @@ function change( switch_button )
         switch_button.value = "Player One";
 }
 
+
+var boardArray = [];
+function checkWin (boardArray) {
+
+}
