@@ -60,6 +60,10 @@ input.switch {
     height: 50px;
 }
 
-row0 {
+[row="0"] div {
     background-color: none;
+}
+
+[row="0"] div:hover {
+    background-color: green;
 }
