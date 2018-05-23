@@ -1,19 +1,24 @@
 $(document).ready(connectFourStuff);
 
-var player1 = null;
-
+var currentPlayer = null;
+var coordinate = [0,0]; //dummy data
 
 function connectFourStuff() {
 
   
   gameBoardCreate(7);
-  eventListeners();
+  addEventListeners();
 
 
 }
-var cell;
+
+function addEventListeners(){
+    horizontal();
+}
 
 
+
+  var cell;
   var rows = 8;
   var cols = 7;
   var boardArray = [['o']];
@@ -36,7 +41,7 @@ function gameBoardCreate(size) { // need parameter to function
           rowHolder.append(column) // appending the column to the rowHolder div
 
         rowHolder.append(column) // appending the column to the rowHolder div
-        column.click(handleClick);
+        // column.click(handleClick);
 
       } // close column creation for loop
         $("#gameBoard").append(rowHolder); // appending the rowHolder div to the gameBoard div
@@ -76,18 +81,17 @@ function change( switch_button ) {
         console.log('currentRow', currentRow);
         console.log(`row: ${currentRow}, col: ${currentCol}`);
 
-
         // cellEmpty = false;
         //debugger;
         if (currentCol == 6) {
             for (var row = 6; row > 0; row--) {
                 var cellCheck = $("div[row=" + row + "] > div[col=" + currentCol + "]");
-                console.log(cellCheck.css('background-color'))
+                console.log(cellCheck.css('background-color'));
 
                 if (cellCheck.css('background-color') === "rgb(255, 255, 0)") {
                     $("div[row=" + row + "] > div[col=" + currentCol + "]").css('background-color', 'red');
 
-                    return
+                    return;
                 }
 
 
@@ -95,15 +99,51 @@ function change( switch_button ) {
         }
 
     }
+}
 
-    function playerChange(square) {
-        if (player1 == 1) {
-            document.getElementById(square).innerHTML = "red";
-            player1 = 0;
-        } else {
-            document.getElementById(square).innerHTML = "black";
-            player1 = 1;
-        }
+
+function playerChange() {
+    if (currentPlayer === 'red') {
+        currentPlayer = "black";
+    } else {
+        currentPlayer = "red";
     }
-}//something that keeps track of what player it is.
-//look at loop prototype with game board
+}
+// call at the end of the click function when coin is dropped
+//function that puts piece on dom
+var boardArray = [
+    ['1', '1', '1', '1', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['1', '1', '1', '1', '0', '0', '0']
+];
+
+function horizontal(){
+
+    var x = coordinate[0];
+    var y = coordinate[0];
+    var counter = 0;
+    debugger;
+    for( var horizontal = 0; horizontal < boardArray.length; horizontal++){
+        if(boardArray[x + horizontal][1] === '1'){
+            counter++;
+        } else {
+            counter = 0;
+        }
+
+        if(counter === 4){
+            console.log('winner');
+        }
+
+        //if coordinate is at "this place" then check if 1 then +1 until 0; if 0 then -1 till 0 again
+    }
+}
+//once piece is drop then find coordinate
+//if cell is clicked or filled then set color
+//else check next cell
+// if have something that matches next keep going
+// if no match stop
+
