@@ -76,3 +76,11 @@ input.switch {
 [row="0"] div:hover {
     background-color: green;
 }
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: black;
+}
