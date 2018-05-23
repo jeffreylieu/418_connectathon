@@ -60,10 +60,18 @@ input.switch {
     height: 50px;
 }
 
-[row="0"] div {
-    background-color: none;
+.tokenInputRow {
+    display: flex;
+    flex-flow: row wrap;
+    height: 50px;
 }
 
-[row="0"] div:hover {
+.tokenInputCol {
+    background-color: none;
+    height: 50px;
+    width: 50px;
+}
+
+.tokenInputCol:hover {
     background-color: green;
 }
