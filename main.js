@@ -17,30 +17,25 @@ var cell;
   var boardArray = [['o']];
 
 
-function eventListeners() {
-
-}
-
-// dynamic board creator - enter the size you want for NxN
-// by Daniel
-function gameBoardCreate(size) {
-  for (var row = 0; row < size; row++) {
-    var rowHolder = $("<div>", {
-      row: row,
-      'class': 'row',
-    })
-    for (var col = 0; col < size; col++) {
-      var column = $("<div>", {
-        "class": 'col',
-        col: col,
+  // dynamic board creator - enter the size you want for NxN
+  // by Daniel
+function gameBoardCreate(size) { // need parameter to function
+    for (var row = 0; row < size+1; row++) {
+      var rowHolder = $("<div>",{ // creating variable for new div
+        row: row, // inside each div adding row = "row-index number"
+        'class': 'row', // adding a class of row
       })
-      rowHolder.append(column);
-      column.click(handleClick);
-
-    }
-    $("#gameBoard").append(rowHolder);
-  }
-}
+      for (var col = 0; col < size; col++) {
+        var column = $("<div>",{ // creating variable for each column block div
+        col: col, // inside each tag adding col = "col index number"
+        "class": 'col', // adding class of col for each column div
+      })
+        rowHolder.append(column) // appending the column to the rowHolder div
+        column.click(handleClick);
+      } // close column creation for loop
+      $("#gameBoard").append(rowHolder); // appending the rowHolder div to the gameBoard div
+    } // close row creation for loop
+  } // close gameBoardCreate function
 
 
 
