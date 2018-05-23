@@ -1,6 +1,9 @@
 
 $(document).ready(connectFourStuff);
 
+var player1 = null;
+var player2 = null;
+
 function connectFourStuff() {
     gameBoardCreate(7);
     eventListeners();
@@ -28,17 +31,31 @@ function gameBoardCreate(size) {
         column.click(clickHandler)
       }
       $("#gameBoard").append(rowHolder);
+
     }
   }
 
 
-
-
-function change( switch_button )
-{
-    if ( switch_button.value === "Player One" )
+  //button switching players
+function change( switch_button ) {
+    if (switch_button.value === "Player One") {
         switch_button.value = "Player Two";
-    else
+        playerChange();
+
+    } else {
         switch_button.value = "Player One";
+        playerChange();
+    }
 }
 
+function playerChange(){
+    switch(playerColor){
+        case player1:
+            //clickhandler to make it red;
+            break;
+        case player2:
+            //clickhandler to make it black;
+            break;
+    }
+}//something that keeps track of what player it is.
+//look at loop prototype with game board
