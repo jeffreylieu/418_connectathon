@@ -32,12 +32,8 @@ function gameBoardCreate(size) { // need parameter to function
         col: col, // inside each tag adding col = "col index number"
         "class": 'col', // adding class of col for each column div
       })
-
-          rowHolder.append(column) // appending the column to the rowHolder div
-
         rowHolder.append(column) // appending the column to the rowHolder div
         column.click(handleClick);
-
       } // close column creation for loop
         $("#gameBoard").append(rowHolder); // appending the rowHolder div to the gameBoard div
     } // close row creation for loop
@@ -58,12 +54,6 @@ function change( switch_button ) {
         playerChange();
     }
 
-    function change(switch_button) {
-        if (switch_button.value === "Player One")
-            switch_button.value = "Player Two";
-        else
-            switch_button.value = "Player One";
-    }
 
 
     function handleClick() {
@@ -96,7 +86,7 @@ function change( switch_button ) {
 
     }
 
-    function playerChange(square) {
+    function playerChange(square) { //need to change according incoming code
         if (player1 == 1) {
             document.getElementById(square).innerHTML = "red";
             player1 = 0;
