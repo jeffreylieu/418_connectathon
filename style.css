@@ -1,0 +1,10 @@
+input {
+    background-color: red;
+    color: blue;
+    cursor: pointer;
+    font-size: 24px;
+}
+input.switch {
+    background-color: blue;
+    color: red;
+}
