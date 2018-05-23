@@ -6,29 +6,73 @@ body {
     background-color: black;
 }
 
+/*  all items in header below */
 header {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: grey;
     height: 15%;
-    font-size: 4rem;
-    align-items: center;
+    font-size: 2rem;
+    color: whitesmoke;
 }
 
+<<<<<<< HEAD
 .col {
     height: 5%;
     width: 5%;
     background-color: yellow;
     border: 2px solid white;
 }
+=======
+#playerSwap {
+    box-sizing: border-box;
+    display: block;
+    justify-content: flex-end;
+    align-items: flex-end;
+    clear: left;
+    height: 1%;
+}
+
+>>>>>>> c68b5260aafd996b35bb79bb5855b3d5b1364450
 input {
     background-color: red;
     color: blue;
     cursor: pointer;
     font-size: 24px;
 }
+
 input.switch {
     background-color: blue;
     color: red;
 
+}
+
+/*  all items in game board below */
+ .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+}
+
+.col {
+    border: 1px white solid;
+    height: 50px;
+    width: 50px;
+    background-color: yellow;
+    float: left;
+    box-sizing: border-box;
+}
+
+.row {
+    height: 50px;
+}
+
+[row="0"] div {
+    background-color: none;
+}
+
+[row="0"] div:hover {
+    background-color: green;
 }
