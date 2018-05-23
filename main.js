@@ -22,7 +22,7 @@ var cell;
   // dynamic board creator - enter the size you want for NxN
   // by Daniel
 function gameBoardCreate(size) { // need parameter to function
-    for (var row = 0; row < size+1; row++) {
+    for (var row = 0; row < size; row++) {
       var rowHolder = $("<div>",{ // creating variable for new div
         row: row, // inside each div adding row = "row-index number"
         'class': 'row', // adding a class of row
