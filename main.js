@@ -103,6 +103,24 @@ function horizontal(){
       //if coordinate is at "this place" then check if 1 then +1 until 0; if 0 then -1 till 0 again
   }
 }
+
+    function vertical(){
+        debugger;
+        var x = coordinate[0];
+        var y = coordinate[0];
+        var counter = 0;
+        for( var vertical = 0; vertical < boardArray.length; vertical++){
+            if(boardArray[x][y + vertical] === '1'){
+                counter++;
+            } else {
+                counter = 0;
+            }
+            if(counter === 4){
+                console.log('winner');
+            }
+        }
+    }
+
 //once piece is drop then find coordinate
 //if cell is clicked or filled then set color
 //else check next cell
@@ -152,54 +170,11 @@ function playerChange() {
 }
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
-var boardArray = [
-    ['1', '1', '1', '1', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['1', '1', '1', '1', '0', '0', '0']
-];
 
-function horizontal(){
-    var x = coordinate[0];
-    var y = coordinate[0];
-    //remove above variables, and pass in x and y to horizontal function to make it dynamic
-    var counter = 0;
-    for( var horizontal = 0; horizontal < boardArray.length; horizontal++){
-        if(boardArray[y][x + horizontal] === '1'){
-            counter++;
-        } else {
-            counter = 0;
-        }
-
-        if(counter === 4){
-            console.log('winner');
-        }
-
-        //if coordinate is at "this place" then check if 1 then +1 until 0; if 0 then -1 till 0 again
-    }
-}
 //once piece is drop then find coordinate
 //if cell is clicked or filled then set color
 //else check next cell
 // if have something that matches next keep going
 // if no match stop
 
-function vertical(){
-    var x = coordinate[0];
-    var y = coordinate[0];
-    var counter = 0;
-    for( var vertical = 0; vertical < boardArray.length; vertical++){
-        if(boardArray[x][y + vertical] === '1'){
-            counter++;
-        } else {
-            counter = 0;
-        }
-        if(counter === 4){
-            console.log('winner');
-        }
-    }
-}
 
