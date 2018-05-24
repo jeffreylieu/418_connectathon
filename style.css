@@ -60,19 +60,39 @@ input.switch {
     border: 1px white solid;
     height: 50px;
     width: 50px;
-    background-color: yellow;
     float: left;
     box-sizing: border-box;
+    border-radius: 50%;
+    background-color: yellow;
 }
 
 .row {
     height: 50px;
+    background-color: blue;
 }
 
-[row="0"] div {
+.tokenInputRow {
+    display: flex;
+    flex-flow: row wrap;
+    height: 50px;
+}
+
+.tokenInputCol {
     background-color: none;
+    height: 50px;
+    width: 50px;
 }
 
-[row="0"] div:hover {
+.tokenInputCol:hover {
     background-color: green;
 }
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: black;
+}
+
+/* need to hide top row */
