@@ -13,6 +13,7 @@ var currentPlayer = null;
 var coordinate = [0, 0]; //dummy data
 var availableRow;
 var playerSwitch = 1;
+var cell;
 
 var resetButton = $('.reset');
 resetButton.on("click", function () {
@@ -60,6 +61,8 @@ function gameBoardCreate(size) { // need parameter to function
                 col: col, // inside each tag adding col = "col index number"
                 "class": 'col', // adding class of col for each column div
             })
+            cell = column;
+            console.log('cell is ', cell);
             rowHolder.append(column) // appending the column to the rowHolder div
             column.click(handleClick);
         } // close column creation for loop
@@ -80,31 +83,31 @@ function connectFour(gameArray) {
     for (var row = 0; row < boardLength; row++) {
         for (var column = 0; column < boardLength; column++) {
             //  console.log(`row = ${row} and col = ${column}`)
-            // checking horizontal for matches
+            // checking horizontal for matches  --->
             if (column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
-                $('#gameBoard').off("click");
+                $(".col").off();
                 showWinModal();
                 return;
             }
             // checking vertical for matches
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
-                $('#gameBoard').off("click");
+                $(".col").off();
                 showWinModal();
                 return;
             }
             // checking down then right
             if (row < boardLength - 3 && column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column + 1], gameArray[row + 2][column + 2], gameArray[row + 3][column + 3])) {
-                $('#gameBoard').off("click");
+                $(".col").off();
                 showWinModal();
                 return;
             }
             // checking down then left
             if (row < boardLength - 3 && column > 2 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column - 1], gameArray[row + 2][column - 2], gameArray[row + 3][column - 3])) {
-                $('#gameBoard').off("click");
+                $(".col").off();
                 showWinModal();
                 return;
             }
