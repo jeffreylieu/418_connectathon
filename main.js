@@ -179,16 +179,47 @@ function handleClick() {
     }
 }//end handleClick()
 
+function checkVertical(rowtoFill, coltoFill, arrayVal) {
+    var currVal = arrayVal;
+    var col = parseInt(coltoFill);
+    var preVal =boardArray;
+    var count = 0;
+ 
+
+    for(var i=6; i >= 0; i--) {
+      //for(var j=0; j<7; j++) {
+        //currVal = boardArray[i][j];
+        if(currVal == preVal[i][col] && currVal !== 0) {
+          count++;
+        } else {
+          count = 0;
+        } 
+
+        if(count == 4) {
+          alert('win');
+          return true;
+        }
+      //   preVal = currVal;
+      
+      // count = 0;
+      // preVal = 0;
+    }
+    return false;
+}
+
 function fillCell(rowtoFill, coltoFill) {
-  //since array is less 1 row than DOM, it need add one row fro DOM and minus 1 for array
+  //since array is less 1 row than DOM, it need add one row fro DOM & minus 1 for array
+  //current array row col: rowtoFill coltoFill
+  console.log("current array row and col ",rowtoFill, coltoFill);
     rowtoFill++;
     playerSwitch = 1-playerSwitch;
     if(playerSwitch == 1) {
       $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
+   
+      checkVertical(rowtoFill, coltoFill, boardArray[rowtoFill-1][coltoFill]);
       //check if win
     }
     else {
-      debugger;
       boardArray[rowtoFill-1][coltoFill] = "2";
       $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'black');
       //check if win
