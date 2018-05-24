@@ -1,47 +1,28 @@
 $(document).ready(connectFourStuff);
 
-var boardArray = [
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0']
-];
-var currentPlayer = null;
-var coordinate = [0, 0]; //dummy data
-var availableRow;
-var playerSwitch = 1;
-
-var resetButton = $('.reset');
-resetButton.on("click", function () {
-    reset();
-});
-
-function reset() {
-    alert('hi');
-    var boardArray = [
-        ['0', '0', '0', '0', '0', '0', '0'],
-        ['0', '0', '0', '0', '0', '0', '0'],
-        ['0', '0', '0', '0', '0', '0', '0'],
-        ['0', '0', '0', '0', '0', '0', '0'],
-        ['0', '0', '0', '0', '0', '0', '0'],
-        ['0', '0', '0', '0', '0', '0', '0'],
-        ['0', '0', '0', '0', '0', '0', '0']
-    ];
-    gameBoardCreate(7);
-}//end reset()
-
-
 function connectFourStuff() {
     gameBoardCreate(7);
     addEventListeners();
 }
 
 function addEventListeners() {
+  $('#reset').on("click", reset);
 
 }
+
+var boardArray = [
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0']
+];
+var currentPlayer = null;
+var coordinate = [0, 0]; //dummy data
+var availableRow;
+var playerSwitch = 1;
 
 // ******************************************************************************
 //                Daniel's Code Below
@@ -123,14 +104,13 @@ function connectFour(gameArray) {
 // by Jeff
 function change(switch_button) {
     if (switch_button.value === "Player One") {
-
         switch_button.value = "Player Two";
         playerChange();
-
     } else {
         switch_button.value = "Player One";
         playerChange();
     }
+
 
     // function change(switch_button) {
     //     if (switch_button.value === "Player One")
@@ -148,6 +128,16 @@ function playerChange() {
         currentPlayer = "red";
     }
 }
+
+// Jeff's playerChange function
+// function playerChange() {
+//     if (currentPlayer == 'red') {
+//         currentPlayer = "black";
+//     } else {
+//         currentPlayer = "red";
+//     }
+// }
+
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
 
@@ -236,3 +226,16 @@ function showWinModal() {
         $('#modelShadow').css('display', 'none');
     }, 4000);
 }// end showWinModal()
+
+function reset() {
+  alert('hi reset hi?');
+  boardArray = [
+      ['0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0']
+  ];
+}//end reset()

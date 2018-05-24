@@ -28,13 +28,17 @@ h2{
     border: 2px solid white;
 }
 
-#playerSwap {
+#playerSwap{
     box-sizing: border-box;
-    display: block;
-    justify-content: flex-end;
+    /*display: block;*/
+    /*justify-content: flex-end;*/
     align-items: flex-end;
     clear: left;
-    height: 1%;
+    /*height: 1%;*/
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
 }
 
 
