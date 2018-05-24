@@ -41,7 +41,7 @@ function gameBoardCreate(size) { // need parameter to function
           rowHolder.append(column) // appending the column to the rowHolder div
 
         rowHolder.append(column) // appending the column to the rowHolder div
-        // column.click(handleClick);
+        column.click(handleClick);
 
       } // close column creation for loop
         $("#gameBoard").append(rowHolder); // appending the rowHolder div to the gameBoard div
@@ -105,7 +105,6 @@ function horizontal(){
 }
 
     function vertical(){
-        debugger;
         var x = coordinate[0];
         var y = coordinate[0];
         var counter = 0;
@@ -160,14 +159,39 @@ function horizontal(){
 }
 
 
+function handleClick() {
+    var currentRow = $(this).parent().attr('row');
+    var currentCol = $(this).attr('col');
 
-function playerChange() {
-    if (currentPlayer === 'red') {
-        currentPlayer = "black";
+    console.log('currentRow currentCol', currentRow, currentCol);
+    console.log(`row: ${currentRow}, col: ${currentCol}`);
+
+    availableRow = findNextRow(currentCol);
+
+    if(availableRow !== -1) {
+        fillCell(availableRow, currentCol);
     } else {
-        currentPlayer = "red";
+        alert('no space');
+        //showInvalidMove();
     }
+}//end handleClick()
+
+function fillCell(rowtoFill, coltoFill) {
+    rowtoFill++;
+    $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
 }
+
+function findNextRow(col) {
+    for (var row = 6; row >= 0; row--) {
+        if(boardArray[row][col] === '0') {
+            console.log('in findNextRow row col is', row, col);
+            boardArray[row][col] = "1";
+            return row;
+        }
+    }
+}//end findNextRow()
+
+
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
 
