@@ -223,6 +223,7 @@ function findNextRow(col) {
             return row;
         }
     }
+    alert('no space!');
 }//end findNextRow()
 
 function showWinModal() {
