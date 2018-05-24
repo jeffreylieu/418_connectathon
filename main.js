@@ -60,36 +60,3 @@ function change( switch_button )
         switch_button.value = "Player One";
 }
 
-
-function checkWin (boardArray) {
-    // check horizontal - Jeff
-    // check veritcal - Jeff
-    // check diagonal right up - Daniel
-    // check diagonal left up - Daniel
-}
-
-
-
-
-
-// //////////////////////////////////////////////////////////////// //
-var currentDrop = boardArray[currentRow,currentCol];
-
-function fourMatchChecker (currentDrop,check1,check2,check3) {
-    return (currentDrop != '0') && (currentDrop == check3) && (currentDrop == check2) && (currentDrop == check3);
- }
-
-function diagonalForwardSlash (currentRow, currentCol) {
-    if (row < boardArray.length - 4 && col < boardArray.length - 3 &&
-        fourMatchChecker(currentDrop, boardArray[row+1][col+1], boardArray[row+2][col+2], boardArray[row+3][col+3])) {
-        return currentDrop;
-    }
-}
-
-function diagonalBackSlash (currentRow, currentCol) {
-    if (row < boardArray.length - 4 && col > 2 && 
-        fourTogether(currentDrop, boardArray[row+1][col-1], boardArray[row+2][col-2], boardArray[row+3][col-3])) {
-      return currentDrop;
-    }
-}
-
