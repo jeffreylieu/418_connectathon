@@ -245,4 +245,5 @@ function reset() {
         ['0', '0', '0', '0', '0', '0', '0']
     ];
     $('.col').on('click', handleClick);
+
 }//end reset()
