@@ -99,7 +99,7 @@ function connectFour(gameArray) {
  // loop through the whole board once not a bunch of times
  for (var row = 0; row < boardLength; row++) {
    for (var column = 0; column < boardLength; column++) {
-     console.log(`row = ${row} and col = ${column}`)
+    //  console.log(`row = ${row} and col = ${column}`)
      // checking horizontal for matches
      if (column < boardLength - 3 &&
       checkFourMatch(gameArray[row][column], gameArray[row][column+1], gameArray[row][column+2], gameArray[row][column+3])) {
@@ -193,7 +193,7 @@ function playerChange() {
 
 
 
-function handleClick() { 
+// function handleClick() { 
 
     // function handleClick() {
     //     var currentRow = $(this).parent().attr('row');
@@ -218,7 +218,7 @@ function handleClick() {
     //     }
 
     // }
-}
+// }
 
 
 function handleClick() {
@@ -265,13 +265,6 @@ function findNextRow(col) {
         }
     }
 }//end findNextRow()
-
-function directionCheck(){
-    horizontal();
-    vertical();
-}
-//something that keeps track of what player it is.
-//look at loop prototype with game 
 
 
 
