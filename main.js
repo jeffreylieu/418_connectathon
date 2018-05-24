@@ -4,11 +4,11 @@ function connectFourStuff() {
     gameBoardCreate(7);
 
     addEventListeners();
+    audio = document.getElementById("myAudio");
 }
 
 function addEventListeners() {
     $('#reset').on("click", reset);
-
 }
 
 var boardArray = [
@@ -24,24 +24,28 @@ var currentPlayer = null;
 var coordinate = [0, 0]; //dummy data
 var availableRow;
 var playerSwitch = 1;
+var audio;
+//audio should define outside document.ready
+//1 to make it gloable
+// = getElementById inside document.ready
+// if not definition inside .ready. it will find audio before DOM load.
 
 // ******************************************************************************
 //                Daniel's Code Below
 // ******************************************************************************
 
 // dynamic board creator - enter the size you want for NxN
-// by Daniel
 function gameBoardCreate(size) { // need parameter to function
     for (var row = 0; row < size + 1; row++) {
         var rowHolder = $("<div>", { // creating variable for new div
             row: row, // inside each div adding row = "row-index number"
             'class': 'row', // adding a class of row
-        })
+        });
         for (var col = 0; col < size; col++) {
             var column = $("<div>", { // creating variable for each column block div
                 col: col, // inside each tag adding col = "col index number"
                 "class": 'col', // adding class of col for each column div
-            })
+            });
             cell = column;
             // console.log('cell is ', cell);
             rowHolder.append(column) // appending the column to the rowHolder div
@@ -60,35 +64,49 @@ function checkFourMatch(firstCheck, secondCheck, thirdCheck, fourthCheck) {
 
 function connectFour(gameArray) {
     var boardLength = gameArray.length;
-    // loop through the whole board once not a bunch of times
-    for (var row = 0; row < boardLength; row++) {
-        for (var column = 0; column < boardLength; column++) {
+    // loop through all checks via if statements once per increment
+    for (var row = 0; row < boardLength; row++) { // row loop
+        for (var column = 0; column < boardLength; column++) {  // column loop
             //  console.log(`row = ${row} and col = ${column}`)
             // checking horizontal for matches  --->
-            if (column < boardLength - 3 &&
+            if (column < boardLength - 3 &&  // 
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
+
                 $(".col").off();
+
                 showWinModal();
+                audio.play();
                 return;
             }                              // |  
             // checking vertical for matches  |
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
+
+ 
+
                 $(".col").off();
+
                 showWinModal();
+                audio.play();
                 return;
             }
             // checking down then right  
             if (row < boardLength - 3 && column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column + 1], gameArray[row + 2][column + 2], gameArray[row + 3][column + 3])) {
+
+               
+
                 $(".col").off();
+
                 showWinModal();
                 return;
             }
             // checking down then left
             if (row < boardLength - 3 && column > 2 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column - 1], gameArray[row + 2][column - 2], gameArray[row + 3][column - 3])) {
+
                 $(".col").off();
+
                 showWinModal();
                 return;
             }
