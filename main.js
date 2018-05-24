@@ -2,7 +2,6 @@ $(document).ready(connectFourStuff);
 
 function connectFourStuff() {
     gameBoardCreate(7);
-
     addEventListeners();
     audio = document.getElementById("myAudio");
 }
@@ -81,11 +80,7 @@ function connectFour(gameArray) {
             // checking vertical for matches  |
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
-
- 
-
                 $(".col").off();
-
                 showWinModal();
                 audio.play();
                 return;
@@ -93,20 +88,14 @@ function connectFour(gameArray) {
             // checking down then right  
             if (row < boardLength - 3 && column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column + 1], gameArray[row + 2][column + 2], gameArray[row + 3][column + 3])) {
-
-               
-
                 $(".col").off();
-
                 showWinModal();
                 return;
             }
             // checking down then left
             if (row < boardLength - 3 && column > 2 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column - 1], gameArray[row + 2][column - 2], gameArray[row + 3][column - 3])) {
-
                 $(".col").off();
-
                 showWinModal();
                 return;
             }
@@ -140,12 +129,6 @@ function changePlayer(){
         }
     }
 
-
-
-// call at the end of the click function when coin is dropped
-//function that puts piece on dom
-
-
 // ******************************************************************************
 //                Sharry's Code Below
 // ******************************************************************************
@@ -166,7 +149,6 @@ function handleClick() {
         fillCell(availableRow, currentCol);
     } else {
         alert('no space');
-        //showInvalidMove();
     }
 }//end handleClick()
 
@@ -203,7 +185,6 @@ function fillCell(rowtoFill, coltoFill) {
         $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
         //check if win
         connectFour(boardArray);
-
         //checkVertical(rowtoFill, coltoFill, boardArray[rowtoFill-1][coltoFill]);
     }
     else {
@@ -211,7 +192,6 @@ function fillCell(rowtoFill, coltoFill) {
         $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'black');
         //check if win
         connectFour(boardArray);
-
     }
 }//end fillCell()
 
@@ -223,6 +203,7 @@ function findNextRow(col) {
             return row;
         }
     }
+    alert('no space!');
 }//end findNextRow()
 
 function showWinModal() {
