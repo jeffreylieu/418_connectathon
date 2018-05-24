@@ -4,11 +4,11 @@ function connectFourStuff() {
     gameBoardCreate(7);
 
     addEventListeners();
+    audio = document.getElementById("myAudio");
 }
 
 function addEventListeners() {
     $('#reset').on("click", reset);
-
 }
 
 var boardArray = [
@@ -24,6 +24,11 @@ var currentPlayer = null;
 var coordinate = [0, 0]; //dummy data
 var availableRow;
 var playerSwitch = 1;
+var audio;
+//audio should define outside document.ready
+//1 to make it gloable
+// = getElementById inside document.ready
+// if not definition inside .ready. it will find audio before DOM load.
 
 // ******************************************************************************
 //                Daniel's Code Below
@@ -66,28 +71,42 @@ function connectFour(gameArray) {
             // checking horizontal for matches  --->
             if (column < boardLength - 3 &&  // 
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
+
                 $(".col").off();
+
                 showWinModal();
+                audio.play();
                 return;
             }                              // |  
             // checking vertical for matches  |
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
+
+ 
+
                 $(".col").off();
+
                 showWinModal();
+                audio.play();
                 return;
             }
             // checking down then right  
             if (row < boardLength - 3 && column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column + 1], gameArray[row + 2][column + 2], gameArray[row + 3][column + 3])) {
+
+               
+
                 $(".col").off();
+
                 showWinModal();
                 return;
             }
             // checking down then left
             if (row < boardLength - 3 && column > 2 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column - 1], gameArray[row + 2][column - 2], gameArray[row + 3][column - 3])) {
+
                 $(".col").off();
+
                 showWinModal();
                 return;
             }
@@ -103,25 +122,25 @@ function connectFour(gameArray) {
 
 // function to change players between player one and player two
 // by Jeff
-function change(switch_button) {
-    if (switch_button.value === "Player One") {
-        switch_button.value = "Player Two";
-        // playerChange();
-    } else {
-        switch_button.value = "Player One";
-        // playerChange();
+function changePlayer(){
+    if(currentPlayer==='black'){
+        currentPlayer='red';
+    }else{
+        currentPlayer='black';
     }
 }
 
-// Jeff's playerChange function
-function playerChange() {
-    if (currentPlayer == 'red') {
-    } else {
-        currentPlayer = "black";
-
+    function change(switch_button) {
+        if (switch_button.value === "Player One") {
+            switch_button.value = "Player Two";
+            // playerChange();
+        } else {
+            switch_button.value = "Player One";
+            // playerChange();
+        }
     }
-    currentPlayer = "red";
-}
+
+
 
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
@@ -215,6 +234,7 @@ function showWinModal() {
 
 function reset() {
     $('.col').css('background-color', 'yellow');
+    $('[row="0"]>div').css('background-color', 'black');
     boardArray = [
         ['0', '0', '0', '0', '0', '0', '0'],
         ['0', '0', '0', '0', '0', '0', '0'],
