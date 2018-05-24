@@ -210,7 +210,7 @@ function showWinModal() {
     $('#modelShadow').css('display', 'block');
     setTimeout(function () {
         $('#modelShadow').css('display', 'none');
-    }, 1000);
+    }, 2000);
 }// end showWinModal()
 
 function reset() {
@@ -226,4 +226,5 @@ function reset() {
         ['0', '0', '0', '0', '0', '0', '0']
     ];
     $('.col').on('click', handleClick);
+
 }//end reset()

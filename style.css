@@ -12,10 +12,10 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: grey;
+    background-color: black;
     height: 15%;
     font-size: 2rem;
-    color: whitesmoke;
+    color: red;
     font-family: 'Russo One', sans-serif;
 
 }
@@ -77,7 +77,7 @@ input.switch {
 .row {
     height: 12%;
     width: 100%;
-    background-color: blue;
+    background-color: black;
 }
 
 .col {
@@ -89,6 +89,16 @@ input.switch {
     border-radius: 50%;
     background-color: yellow;
     border: 2px solid white;
+    animation: drop 1s;
+
+}
+@keyframes drop {
+    from {
+        transform: translate3d(0, -80vmin, 0);
+    }
+    to {
+        transform: translate3d(0, 2px, 0);
+    }
 }
 
 [row="0"] {
@@ -118,6 +128,7 @@ input.switch {
 .blue {
     background-color: black;
 }
+
 
 
 /* *************************************************************** */
@@ -151,6 +162,10 @@ input.switch {
       height: 5vh;
       display: flex;
       justify-content: center;
+
   }
 
+  #reset{
+      font-size: 2rem;
+  }
 
