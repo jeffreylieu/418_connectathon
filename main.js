@@ -1,15 +1,17 @@
 $(document).ready(connectFourStuff);
 
-var player1 = null;
-
+var currentPlayer = null;
+var coordinate = [0,0]; //dummy data
 
 function connectFourStuff() {
   gameBoardCreate(7);
  // eventListeners();
 
-
 }
-var cell;
+
+function addEventListeners(){
+    horizontal();
+}
 
 var availableRow;
 var changedRow;
@@ -95,7 +97,6 @@ function findNextRow(col) {
 
 
 
-
 // JEFF CODE BELOW
 
     function change(switch_button) {
@@ -107,14 +108,45 @@ function findNextRow(col) {
 
 
 
-    function playerChange(square) {
-        if (player1 == 1) {
-            document.getElementById(square).innerHTML = "red";
-            player1 = 0;
-        } else {
-            document.getElementById(square).innerHTML = "black";
-            player1 = 1;
-        }
+
+function playerChange() {
+    if (currentPlayer === 'red') {
+        currentPlayer = "black";
+    } else {
+        currentPlayer = "red";
     }
-}//something that keeps track of what player it is.
-//look at loop prototype with game board
+}
+// call at the end of the click function when coin is dropped
+//function that puts piece on dom
+var boardArray = [
+    ['1', '1', '1', '1', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['1', '1', '1', '1', '0', '0', '0']
+];
+
+function horizontal(){
+
+    var x = coordinate[0];
+    var y = coordinate[0];
+    //remove above variables, and pass in x and y to horizontal function to make it dynamic
+    var counter = 0;
+    for( var horizontal = 0; horizontal < boardArray.length; horizontal++){
+        if(boardArray[y][x + horizontal] === '1'){
+            counter++;
+        } else {
+            counter = 0;
+        }
+
+        if(counter === 4){
+            console.log('winner');
+        }
+
+        //if coordinate is at "this place" then check if 1 then +1 until 0; if 0 then -1 till 0 again
+    }}
+}
+//something that keeps track of what player it is.
+//look at loop prototype with game 
