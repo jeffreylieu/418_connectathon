@@ -2,23 +2,23 @@ $(document).ready(connectFourStuff);
 
 function connectFourStuff() {
     gameBoardCreate(7);
-  
+
     addEventListeners();
 }
 
 function addEventListeners() {
-  $('#reset').on("click", reset);
+    $('#reset').on("click", reset);
 
 }
 
 var boardArray = [
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0']
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0']
 ];
 var currentPlayer = null;
 var coordinate = [0, 0]; //dummy data
@@ -43,7 +43,7 @@ function gameBoardCreate(size) { // need parameter to function
                 "class": 'col', // adding class of col for each column div
             })
             cell = column;
-           // console.log('cell is ', cell);
+            // console.log('cell is ', cell);
             rowHolder.append(column) // appending the column to the rowHolder div
             column.click(handleClick);
         } // close column creation for loop
@@ -98,7 +98,6 @@ function connectFour(gameArray) {
 }//end connectFour(gameArray)
 
 
-
 // ******************************************************************************
 //                Jeff's Code Below
 // ******************************************************************************
@@ -108,10 +107,10 @@ function connectFour(gameArray) {
 function change(switch_button) {
     if (switch_button.value === "Player One") {
         switch_button.value = "Player Two";
-       // playerChange();
+        // playerChange();
     } else {
         switch_button.value = "Player One";
-       // playerChange();
+        // playerChange();
     }
 }
 
@@ -121,12 +120,12 @@ function playerChange() {
     } else {
         currentPlayer = "black";
 
-    } currentPlayer = "red";
+    }
+    currentPlayer = "red";
 }
 
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
-
 
 
 // ******************************************************************************
@@ -216,15 +215,15 @@ function showWinModal() {
 }// end showWinModal()
 
 function reset() {
-  $('.col').css('background-color', 'yellow'); 
-  boardArray = [
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0']
-  ];
-  $('.col').on('click', handleClick);
+    $('.col').css('background-color', 'yellow');
+    boardArray = [
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0']
+    ];
+    $('.col').on('click', handleClick);
 }//end reset()
