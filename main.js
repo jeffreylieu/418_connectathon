@@ -152,27 +152,6 @@ function handleClick() {
     }
 }//end handleClick()
 
-// function checkVertical(rowtoFill, coltoFill, arrayVal) {
-//     var currVal = arrayVal;
-//     var col = parseInt(coltoFill);
-//     var preVal =boardArray;
-//     var count = 0;
-//     for(var i=6; i >= 0; i--) {
-//       //for(var j=0; j<7; j++) {
-//         //currVal = boardArray[i][j];
-//         if(currVal == preVal[i][col] && currVal !== 0) {
-//           count++;
-//         } else {
-//           count = 0;
-//         } 
-
-//         if(count == 4) {
-//           alert('win');
-//           return true;
-//         }
-//     }
-//     return false;
-// }
 
 function fillCell(rowtoFill, coltoFill) {
     //since array is less 1 row than DOM, it need add one row fro DOM & minus 1 for array
