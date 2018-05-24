@@ -55,8 +55,8 @@ function gameBoardCreate(size) { // need parameter to function
 function checkFourMatch(firstCheck, secondCheck, thirdCheck, fourthCheck) {
     if ((firstCheck !== '0') && (firstCheck === secondCheck) && (firstCheck === thirdCheck) && (firstCheck === fourthCheck)) {
         return true;
-    }
-}
+    } // function to check four places 
+} // close checkFourMatch function
 
 function connectFour(gameArray) {
     var boardLength = gameArray.length;
