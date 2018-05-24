@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Connect Four</title>
@@ -8,27 +9,44 @@
     <script src="main.js"></script>
     <title>Connect Four</title>
 
-
 </head>
 <body>
     <header>
         <div>
             <h2>Connect Four</h2>
         </div>
+
+        <div id="playerSwap">
+            <input type="button" value="Player One" onclick="return change(this);" />
+        </div>
+
+        <div>
+            <button id='reset'>Reset Game</button>
+        </div>
+    </header>
+
+    <audio id="myAudio">
+        <source src="applause.mp3" type="audio/mpeg">
+    </audio>
+
     </header>
     <div id="playerSwap">
         <input type="button" value="Player One" onclick="return change(this);" />
     </div>
+
     <div id='modelShadow'>
         <div id='modelBody'> </div>
-      </div>
+    </div>
 
     <div class="container">
         <div id="gameBoard">
         </div>
     </div>
+
     <div class="button">
         <button id='reset'>Reset Game</button>
     </div>
+
 </body>
+
 </html>
