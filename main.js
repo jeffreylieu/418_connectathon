@@ -105,10 +105,10 @@ function connectFour(gameArray) {
 function change(switch_button) {
     if (switch_button.value === "Player One") {
         switch_button.value = "Player Two";
-        playerChange();
+       // playerChange();
     } else {
         switch_button.value = "Player One";
-        playerChange();
+       // playerChange();
     }
 }
 
@@ -210,7 +210,7 @@ function showWinModal() {
 }// end showWinModal()
 
 function reset() {
-  alert('hi reset hi?');
+  $('.col').css('background-color', 'yellow'); 
   boardArray = [
       ['0', '0', '0', '0', '0', '0', '0'],
       ['0', '0', '0', '0', '0', '0', '0'],
