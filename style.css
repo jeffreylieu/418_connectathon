@@ -17,6 +17,14 @@ header {
     color: whitesmoke;
 }
 
+
+.col {
+    height: 5%;
+    width: 5%;
+    background-color: yellow;
+    border: 2px solid white;
+}
+
 #playerSwap {
     box-sizing: border-box;
     display: block;
@@ -25,6 +33,7 @@ header {
     clear: left;
     height: 1%;
 }
+
 
 input {
     background-color: red;
@@ -60,6 +69,26 @@ input.switch {
     height: 50px;
 }
 
-row0 {
+.tokenInputRow {
+    display: flex;
+    flex-flow: row wrap;
+    height: 50px;
+}
+
+.tokenInputCol {
     background-color: none;
+    height: 50px;
+    width: 50px;
+}
+
+.tokenInputCol:hover {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: black;
 }
