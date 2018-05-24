@@ -129,15 +129,6 @@ function playerChange() {
     }
 }
 
-// Jeff's playerChange function
-// function playerChange() {
-//     if (currentPlayer == 'red') {
-//         currentPlayer = "black";
-//     } else {
-//         currentPlayer = "red";
-//     }
-// }
-
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
 

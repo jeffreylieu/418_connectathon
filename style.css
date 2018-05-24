@@ -21,12 +21,12 @@ h2{
     height: 6vh;
 }
 
-.col {
-    height: 5%;
-    width: 5%;
-    background-color: yellow;
-    border: 2px solid white;
-}
+/*.col {*/
+    /*height: 5%;*/
+    /*width: 5%;*/
+    /*background-color: yellow;*/
+    /*border: 2px solid white;*/
+/*}*/
 
 #playerSwap{
     box-sizing: border-box;
@@ -60,7 +60,7 @@ input.switch {
     height: 50%;
     display: flex;
     justify-content: center;
-    align-items: top;
+
 }
 
 .col {
@@ -71,6 +71,7 @@ input.switch {
     box-sizing: border-box;
     border-radius: 50%;
     background-color: yellow;
+    border: 2px solid white;
 }
 
 .row {
@@ -85,7 +86,7 @@ input.switch {
 }
 
 .tokenInputCol {
-    background-color: none;
+    /*background-color: none;*/
     height: 50px;
     width: 50px;
 }
