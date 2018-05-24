@@ -180,19 +180,20 @@ function handleClick() {
 }//end handleClick()
 
 function fillCell(rowtoFill, coltoFill) {
+  //since array is less 1 row than DOM, it need add one row fro DOM and minus 1 for array
     rowtoFill++;
     playerSwitch = 1-playerSwitch;
     if(playerSwitch == 1) {
       $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
+      //check if win
     }
     else {
+      debugger;
+      boardArray[rowtoFill-1][coltoFill] = "2";
       $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'black');
+      //check if win
     }
-    // currentPlayer = $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]");
-    // currentPlayer.css('background-color', 'red');
-   
-    //currentPlayer = "black";
-  }
+  }//end fillCell()
 
 function findNextRow(col) {
     for (var row = 6; row >= 0; row--) {
