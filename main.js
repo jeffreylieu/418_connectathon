@@ -67,13 +67,7 @@ function change( switch_button ) {
         playerChange();
     }
 
-    function change(switch_button) {
-        if (switch_button.value === "Player One")
-            switch_button.value = "Player Two";
-        else
-            switch_button.value = "Player One";
-    }
-
+}
     // Jeff's playerChange function
 function playerChange() {
   if (currentPlayer == 'red') {
@@ -96,6 +90,7 @@ function horizontal(){
           counter++;
       } else {
           counter = 0;
+
       }
 
       if(counter === 4){
@@ -106,21 +101,24 @@ function horizontal(){
   }
 }
 
-    function vertical(){
-        var x = coordinate[0];
-        var y = coordinate[0];
-        var counter = 0;
-        for( var vertical = 0; vertical < boardArray.length; vertical++){
-            if(boardArray[x][y + vertical] === '1'){
-                counter++;
-            } else {
-                counter = 0;
-            }
-            if(counter === 4){
-                console.log('winner');
-            }
+function vertical(){ //check if vertical  is working
+        //remove above variables, and pass in x and y to horizontal function to make it dynamic
+    var x = coordinate[0];
+    var y = coordinate[0];
+    var counter = 0;
+    debugger;
+    for( var vertical = 0; vertical < boardArray.length; vertical++){
+        if(boardArray[x][y + vertical] === '1'){
+            counter++;
+        } else {
+            counter = 0;
+            playerChange();
+        }
+        if(counter === 4){
+            console.log('winner');
         }
     }
+}
 
 //once piece is drop then find coordinate
 //if cell is clicked or filled then set color
@@ -135,6 +133,35 @@ function horizontal(){
 // ******************************************************************************
 
 // Sharry's function for click handling
+
+//     function handleClick() {
+//         var currentRow = $(this).parent().attr('row');
+//         var currentCol = $(this).attr('col');
+//         boardArray[currentRow][currentCol] = 'x';
+//         console.log('boardArray', boardArray);
+//         console.log('currentRow', currentRow);
+//         console.log(`row: ${currentRow}, col: ${currentCol}`);
+//         // cellEmpty = false;
+//         //debugger;
+//         if (currentCol == 6) {
+//             for (var row = 6; row > 0; row--) {
+//                 var cellCheck = $("div[row=" + row + "] > div[col=" + currentCol + "]");
+//                 console.log(cellCheck.css('background-color'));
+//
+//                 if (cellCheck.css('background-color') === "rgb(255, 255, 0)") {
+//                     $("div[row=" + row + "] > div[col=" + currentCol + "]").css('background-color', 'red');
+//
+//                     return;
+//                 }
+//             }
+//         }
+//
+//     }
+
+
+
+function handleClick() { 
+
     // function handleClick() {
     //     var currentRow = $(this).parent().attr('row');
     //     var currentCol = $(this).attr('col');
@@ -173,6 +200,7 @@ function handleClick() {
 
     if(availableRow !== -1) {
         fillCell(availableRow, currentCol);
+        directionCheck();
     } else {
         alert('no space');
         //showInvalidMove();
@@ -188,7 +216,7 @@ function fillCell(rowtoFill, coltoFill) {
       //check if win
     }
     else {
-      debugger;
+      
       boardArray[rowtoFill-1][coltoFill] = "2";
       $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'black');
       //check if win
@@ -205,6 +233,10 @@ function findNextRow(col) {
     }
 }//end findNextRow()
 
+function directionCheck(){
+    horizontal();
+    vertical();
+}
 
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
