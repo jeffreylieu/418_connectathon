@@ -113,14 +113,6 @@ function change(switch_button) {
         switch_button.value = "Player One";
        // playerChange();
     }
-
-
-    // function change(switch_button) {
-    //     if (switch_button.value === "Player One")
-    //         switch_button.value = "Player Two";
-    //     else
-    //         switch_button.value = "Player One";
-    // }
 }
 
 // Jeff's playerChange function
@@ -128,8 +120,8 @@ function playerChange() {
     if (currentPlayer == 'red') {
     } else {
         currentPlayer = "black";
-        currentPlayer = "red";
-    }
+
+    } currentPlayer = "red";
 }
 
 // call at the end of the click function when coin is dropped

@@ -45,13 +45,13 @@ h2{
 
 input {
     background-color: red;
-    color: blue;
+    color: black;
     cursor: pointer;
     font-size: 24px;
 }
 
 input.switch {
-    background-color: blue;
+    background-color: black;
     color: red;
 
 }
@@ -60,7 +60,7 @@ input.switch {
             /*  all items in game board below */
 /* *************************************************************** */
  .container {
-    height: 85%;
+    height: 72%;
     display: flex;
     justify-content: center;
 
@@ -147,6 +147,3 @@ input.switch {
   }
 
 
-  div#gameBoard{
-      height: 50vh;
-  }
