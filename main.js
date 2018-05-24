@@ -132,19 +132,19 @@ function change(switch_button) {
         playerChange();
     }
 
-    function change(switch_button) {
-        if (switch_button.value === "Player One")
-            switch_button.value = "Player Two";
-        else
-            switch_button.value = "Player One";
-    }
+    // function change(switch_button) {
+    //     if (switch_button.value === "Player One")
+    //         switch_button.value = "Player Two";
+    //     else
+    //         switch_button.value = "Player One";
+    // }
 }
 
 // Jeff's playerChange function
 function playerChange() {
     if (currentPlayer == 'red') {
-        currentPlayer = "black";
     } else {
+        currentPlayer = "black";
         currentPlayer = "red";
     }
 }
