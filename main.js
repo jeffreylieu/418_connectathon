@@ -15,14 +15,15 @@ var availableRow;
 var playerSwitch = 1;
 var cell;
 
-var resetButton = $('.reset');
+var resetButton = $('#reset');
 resetButton.on("click", function () {
-    reset();
+    alert('hi');
+    //reset();
 });
 
 function reset() {
     alert('hi');
-    var boardArray = [
+    boardArray = [
         ['0', '0', '0', '0', '0', '0', '0'],
         ['0', '0', '0', '0', '0', '0', '0'],
         ['0', '0', '0', '0', '0', '0', '0'],
@@ -37,11 +38,12 @@ function reset() {
 
 function connectFourStuff() {
     gameBoardCreate(7);
+  
     addEventListeners();
 }
 
 function addEventListeners() {
-
+   
 }
 
 // ******************************************************************************
@@ -89,15 +91,15 @@ function connectFour(gameArray) {
                 $(".col").off();
                 showWinModal();
                 return;
-            }
-            // checking vertical for matches
+            }                              // |  
+            // checking vertical for matches  |
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
                 $(".col").off();
                 showWinModal();
                 return;
             }
-            // checking down then right
+            // checking down then right  
             if (row < boardLength - 3 && column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column + 1], gameArray[row + 2][column + 2], gameArray[row + 3][column + 3])) {
                 $(".col").off();
