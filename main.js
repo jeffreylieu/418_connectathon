@@ -29,10 +29,6 @@ var audio;
 // = getElementById inside document.ready
 // if not definition inside .ready. it will find audio before DOM load.
 
-// ******************************************************************************
-//                Daniel's Code Below
-// ******************************************************************************
-
 // dynamic board creator - enter the size you want for NxN
 function gameBoardCreate(size) { // need parameter to function
     for (var row = 0; row < size + 1; row++) {
@@ -61,6 +57,7 @@ function checkFourMatch(firstCheck, secondCheck, thirdCheck, fourthCheck) {
     } // function to check four places 
 } // close checkFourMatch function
 
+// by Jeff and Daniel
 function connectFour(gameArray) {
     var boardLength = gameArray.length;
     // loop through all checks via if statements once per increment
@@ -105,34 +102,6 @@ function connectFour(gameArray) {
 }//end connectFour(gameArray)
 
 
-// ******************************************************************************
-//                Jeff's Code Below
-// ******************************************************************************
-
-// function to change players between player one and player two
-// by Jeff
-function changePlayer(){
-    if(currentPlayer==='black'){
-        currentPlayer='red';
-    }else{
-        currentPlayer='black';
-    }
-}
-
-    function change(switch_button) {
-        if (switch_button.value === "Player One") {
-            switch_button.value = "Player Two";
-            // playerChange();
-        } else {
-            switch_button.value = "Player One";
-            // playerChange();
-        }
-    }
-
-// ******************************************************************************
-//                Sharry's Code Below
-// ******************************************************************************
-
 // Sharry's function for click handling
 
 function handleClick() {
@@ -156,7 +125,7 @@ function handleClick() {
 function fillCell(rowtoFill, coltoFill) {
     //since array is less 1 row than DOM, it need add one row fro DOM & minus 1 for array
     //current array row col: rowtoFill coltoFill
-
+    //by Jeff and Sharry
     console.log("current array row and col ", rowtoFill, coltoFill);
     rowtoFill++;
     playerSwitch = 1 - playerSwitch;
