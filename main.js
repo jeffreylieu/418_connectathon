@@ -10,6 +10,8 @@ var boardArray = [
   ];
 var currentPlayer = null;
 var coordinate = [0,0]; //dummy data
+var availableRow;
+var playerSwitch = 1;
 
 function connectFourStuff() {
   gameBoardCreate(7);
@@ -68,7 +70,7 @@ function change( switch_button ) {
 }
     // Jeff's playerChange function
 function playerChange() {
-  if (currentPlayer === 'red') {
+  if (currentPlayer == 'red') {
       currentPlayer = "black";
   } else {
       currentPlayer = "red";
@@ -131,6 +133,7 @@ function vertical(){ //check if vertical  is working
 // ******************************************************************************
 
 // Sharry's function for click handling
+
 //     function handleClick() {
 //         var currentRow = $(this).parent().attr('row');
 //         var currentCol = $(this).attr('col');
@@ -157,7 +160,36 @@ function vertical(){ //check if vertical  is working
 
 
 
-function handleClick() { debugger;
+function handleClick() { 
+
+    // function handleClick() {
+    //     var currentRow = $(this).parent().attr('row');
+    //     var currentCol = $(this).attr('col');
+    //     boardArray[currentRow][currentCol] = 'x';
+    //     console.log('boardArray', boardArray);
+    //     console.log('currentRow', currentRow);
+    //     console.log(`row: ${currentRow}, col: ${currentCol}`);
+    //     // cellEmpty = false;
+    //     //debugger;
+    //     if (currentCol == 6) {
+    //         for (var row = 6; row > 0; row--) {
+    //             var cellCheck = $("div[row=" + row + "] > div[col=" + currentCol + "]");
+    //             console.log(cellCheck.css('background-color'));
+
+    //             if (cellCheck.css('background-color') === "rgb(255, 255, 0)") {
+    //                 $("div[row=" + row + "] > div[col=" + currentCol + "]").css('background-color', 'red');
+
+    //                 return;
+    //             }
+    //         }
+    //     }
+
+    // }
+}
+
+
+function handleClick() {
+
     var currentRow = $(this).parent().attr('row');
     var currentCol = $(this).attr('col');
 
@@ -176,9 +208,20 @@ function handleClick() { debugger;
 }//end handleClick()
 
 function fillCell(rowtoFill, coltoFill) {
+  //since array is less 1 row than DOM, it need add one row fro DOM and minus 1 for array
     rowtoFill++;
-    $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
-}
+    playerSwitch = 1-playerSwitch;
+    if(playerSwitch == 1) {
+      $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
+      //check if win
+    }
+    else {
+      
+      boardArray[rowtoFill-1][coltoFill] = "2";
+      $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'black');
+      //check if win
+    }
+  }//end fillCell()
 
 function findNextRow(col) {
     for (var row = 6; row >= 0; row--) {
