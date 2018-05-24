@@ -18,21 +18,28 @@ header {
     color: whitesmoke;
 }
 
-
-.col {
-    height: 5%;
-    width: 5%;
-    background-color: yellow;
-    border: 2px solid white;
+h2{
+    height: 6vh;
 }
 
-#playerSwap {
+/*.col {*/
+    /*height: 5%;*/
+    /*width: 5%;*/
+    /*background-color: yellow;*/
+    /*border: 2px solid white;*/
+/*}*/
+
+#playerSwap{
     box-sizing: border-box;
-    display: block;
-    justify-content: flex-end;
+    /*display: block;*/
+    /*justify-content: flex-end;*/
     align-items: flex-end;
     clear: left;
-    height: 1%;
+    /*height: 1%;*/
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
 }
 
 
@@ -56,7 +63,7 @@ input.switch {
     height: 85%;
     display: flex;
     justify-content: center;
-    align-items: top;
+
 }
 
 #gameBoard {
@@ -78,6 +85,7 @@ input.switch {
     box-sizing: border-box;
     border-radius: 50%;
     background-color: yellow;
+    border: 2px solid white;
 }
 
 .tokenInputRow {
@@ -87,7 +95,7 @@ input.switch {
 }
 
 .tokenInputCol {
-    background-color: none;
+    /*background-color: none;*/
     height: 50px;
     width: 50px;
 }
@@ -130,4 +138,15 @@ input.switch {
     background-repeat: no-repeat;
     transform: translate(-50%, -50%);
 
+  }
+
+  .button{
+      height: 5vh;
+      display: flex;
+      justify-content: center;
+  }
+
+
+  div#gameBoard{
+      height: 50vh;
   }
