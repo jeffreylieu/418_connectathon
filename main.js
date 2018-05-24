@@ -125,10 +125,10 @@ function horizontal(){
 
     var x = coordinate[0];
     var y = coordinate[0];
+    //remove above variables, and pass in x and y to horizontal function to make it dynamic
     var counter = 0;
-    debugger;
     for( var horizontal = 0; horizontal < boardArray.length; horizontal++){
-        if(boardArray[x + horizontal][1] === '1'){
+        if(boardArray[y][x + horizontal] === '1'){
             counter++;
         } else {
             counter = 0;
