@@ -21,13 +21,50 @@ function connectFourStuff() {
 function addEventListeners(){
 
 }
+var boardArrayHor = [
+  ['1', '1', '1', '1', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '1', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '1', '0', '0', '0'],
+  ['0', '0', '0', '1', '1', '1', '0']
+];
+var boardArrayVer = [
+  ['1', '0', '0', '0', '0', '0', '0'],
+  ['1', '0', '0', '0', '0', '0', '0'],
+  ['1', '0', '0', '0', '0', '0', '0'],
+  ['1', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '1', '1', '0', '0', '0'],
+  ['0', '0', '0', '1', '0', '0', '0'],
+  ['0', '0', '0', '1', '1', '0', '0']
+];
+var boardArraybs = [
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '1', '0', '0', '0', '0', '0'],
+  ['0', '0', '1', '0', '0', '0', '0'],
+  ['0', '0', '0', '1', '0', '0', '0'],
+  ['0', '0', '0', '0', '1', '0', '0']
+];
+var boardArrayfs = [
+  ['0', '0', '0', '1', '0', '0', '0'],
+  ['0', '0', '1', '0', '0', '0', '0'],
+  ['0', '1', '0', '0', '0', '0', '0'],
+  ['1', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0']
+];
+
 
 // ******************************************************************************
 //                Daniel's Code Below
 // ******************************************************************************
 
-  // dynamic board creator - enter the size you want for NxN
-  // by Daniel
+// dynamic board creator - enter the size you want for NxN
+// by Daniel
 function gameBoardCreate(size) { // need parameter to function
     for (var row = 0; row < size+1; row++) {
       var rowHolder = $("<div>",{ // creating variable for new div
@@ -49,6 +86,49 @@ function gameBoardCreate(size) { // need parameter to function
         $("#gameBoard").append(rowHolder); // appending the rowHolder div to the gameBoard div
     } // close row creation for loop
 } // close gameBoardCreate function
+
+
+function checkFourMatch(firstCheck,secondCheck,thirdCheck,fourthCheck) {
+  if ((firstCheck !== '0') && (firstCheck === secondCheck) && (firstCheck === thirdCheck) && (firstCheck === fourthCheck)) {
+    return true;
+  }
+}
+
+function connectFour(gameArray) {
+ var boardLength = gameArray.length;
+ // loop through the whole board once not a bunch of times
+ for (var row = 0; row < boardLength; row++) {
+   for (var column = 0; column < boardLength; column++) {
+     console.log(`row = ${row} and col = ${column}`)
+     // checking horizontal for matches
+     if (column < boardLength - 3 &&
+      checkFourMatch(gameArray[row][column], gameArray[row][column+1], gameArray[row][column+2], gameArray[row][column+3])) {
+     console.log("horizontal check yes")
+     return;
+      }
+     // checking vertical for matches
+     if (row < boardLength - 3 &&
+      checkFourMatch(gameArray[row][column], gameArray[row+1][column], gameArray[row+2][column], gameArray[row+3][column])) {
+        console.log("vertical check yes")
+        return;     }
+     // checking down then right
+     if (row < boardLength - 3 && column < boardLength - 3 &&
+      checkFourMatch(gameArray[row][column], gameArray[row+1][column+1], gameArray[row+2][column+2], gameArray[row+3][column+3])) {
+        console.log("down right check yes")
+        return;
+     }
+     // checking down then left
+     if (row < boardLength - 3 && column > 2 && 
+      checkFourMatch(gameArray[row][column], gameArray[row+1][column-1], gameArray[row+2][column-2], gameArray[row+3][column-3])) {
+        console.log("down left check yes")
+        return;
+     }
+   }      
+ } 
+ return "no winner";
+}
+
+
 
 // ******************************************************************************
 //                Jeff's Code Below
@@ -78,53 +158,6 @@ function playerChange() {
 }
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
-
-
-function horizontal(){
-  var x = coordinate[0];
-  var y = coordinate[0];
-  //remove above variables, and pass in x and y to horizontal function to make it dynamic
-  var counter = 0;
-  for( var horizontal = 0; horizontal < boardArray.length; horizontal++){
-      if(boardArray[y][x + horizontal] === '1'){
-          counter++;
-      } else {
-          counter = 0;
-
-      }
-
-      if(counter === 4){
-          console.log('winner');
-      }
-
-      //if coordinate is at "this place" then check if 1 then +1 until 0; if 0 then -1 till 0 again
-  }
-}
-
-function vertical(){ //check if vertical  is working
-        //remove above variables, and pass in x and y to horizontal function to make it dynamic
-    var x = coordinate[0];
-    var y = coordinate[0];
-    var counter = 0;
-    debugger;
-    for( var vertical = 0; vertical < boardArray.length; vertical++){
-        if(boardArray[x][y + vertical] === '1'){
-            counter++;
-        } else {
-            counter = 0;
-            playerChange();
-        }
-        if(counter === 4){
-            console.log('winner');
-        }
-    }
-}
-
-//once piece is drop then find coordinate
-//if cell is clicked or filled then set color
-//else check next cell
-// if have something that matches next keep going
-// if no match stop
 
 
 
@@ -237,13 +270,8 @@ function directionCheck(){
     horizontal();
     vertical();
 }
+//something that keeps track of what player it is.
+//look at loop prototype with game 
 
-// call at the end of the click function when coin is dropped
-//function that puts piece on dom
 
-//once piece is drop then find coordinate
-//if cell is clicked or filled then set color
-//else check next cell
-// if have something that matches next keep going
-// if no match stop
 
