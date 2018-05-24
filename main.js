@@ -6,23 +6,25 @@ function connectFourStuff() {
 }
 
 function addEventListeners() {
-  $('#reset').on("click", reset);
+    $('#reset').on("click", reset);
 
 }
 
 var boardArray = [
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0']
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0']
 ];
 var currentPlayer = null;
 var coordinate = [0, 0]; //dummy data
 var availableRow;
 var playerSwitch = 1;
+
+var audio = $("#myAudio");
 
 // ******************************************************************************
 //                Daniel's Code Below
@@ -64,28 +66,30 @@ function connectFour(gameArray) {
             // checking horizontal for matches
             if (column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
-                $('#gameBoard').off("click");
+                $('.col').off();
+                //audio.play();
                 showWinModal();
                 return;
             }
             // checking vertical for matches
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
-                $('#gameBoard').off("click");
+                $('.col').off();
+                //audio.play();
                 showWinModal();
                 return;
             }
             // checking down then right
             if (row < boardLength - 3 && column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column + 1], gameArray[row + 2][column + 2], gameArray[row + 3][column + 3])) {
-                $('#gameBoard').off("click");
+                $('.col').off();
                 showWinModal();
                 return;
             }
             // checking down then left
             if (row < boardLength - 3 && column > 2 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column - 1], gameArray[row + 2][column - 2], gameArray[row + 3][column - 3])) {
-                $('#gameBoard').off("click");
+                $('.col').off();
                 showWinModal();
                 return;
             }
@@ -105,10 +109,10 @@ function connectFour(gameArray) {
 function change(switch_button) {
     if (switch_button.value === "Player One") {
         switch_button.value = "Player Two";
-       // playerChange();
+        // playerChange();
     } else {
         switch_button.value = "Player One";
-       // playerChange();
+        // playerChange();
     }
 }
 
@@ -210,14 +214,15 @@ function showWinModal() {
 }// end showWinModal()
 
 function reset() {
-  $('.col').css('background-color', 'yellow'); 
-  boardArray = [
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0'],
-      ['0', '0', '0', '0', '0', '0', '0']
-  ];
+    $('.col').css('background-color', 'yellow');
+    boardArray = [
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0', '0']
+    ];
+    $('.col').on('click', handleClick);
 }//end reset()
