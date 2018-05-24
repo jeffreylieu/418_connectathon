@@ -92,3 +92,27 @@ input.switch {
 .blue {
     background-color: black;
 }
+
+#modelShadow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    display: none;
+    z-index: 10;
+  }
+
+  #modelBody {
+    position: fixed;
+    left: 72%;
+    top: 80%;
+    width:50%;
+    min-width: 50%;
+    min-height: 50%;
+    background-image: url(images/win.gif);
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+
+  }

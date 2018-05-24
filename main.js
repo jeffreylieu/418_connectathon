@@ -179,44 +179,40 @@ function handleClick() {
     }
 }//end handleClick()
 
-function checkVertical(rowtoFill, coltoFill, arrayVal) {
-    var currVal = arrayVal;
-    var col = parseInt(coltoFill);
-    var preVal =boardArray;
-    var count = 0;
- 
+// function checkVertical(rowtoFill, coltoFill, arrayVal) {
+//     var currVal = arrayVal;
+//     var col = parseInt(coltoFill);
+//     var preVal =boardArray;
+//     var count = 0;
+//     for(var i=6; i >= 0; i--) {
+//       //for(var j=0; j<7; j++) {
+//         //currVal = boardArray[i][j];
+//         if(currVal == preVal[i][col] && currVal !== 0) {
+//           count++;
+//         } else {
+//           count = 0;
+//         } 
 
-    for(var i=6; i >= 0; i--) {
-      //for(var j=0; j<7; j++) {
-        //currVal = boardArray[i][j];
-        if(currVal == preVal[i][col] && currVal !== 0) {
-          count++;
-        } else {
-          count = 0;
-        } 
-
-        if(count == 4) {
-          alert('win');
-          return true;
-        }
-      //   preVal = currVal;
-      
-      // count = 0;
-      // preVal = 0;
-    }
-    return false;
-}
+//         if(count == 4) {
+//           alert('win');
+//           return true;
+//         }
+//     }
+//     return false;
+// }
 
 function fillCell(rowtoFill, coltoFill) {
   //since array is less 1 row than DOM, it need add one row fro DOM & minus 1 for array
   //current array row col: rowtoFill coltoFill
+
   console.log("current array row and col ",rowtoFill, coltoFill);
     rowtoFill++;
     playerSwitch = 1-playerSwitch;
     if(playerSwitch == 1) {
       $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
    
-      checkVertical(rowtoFill, coltoFill, boardArray[rowtoFill-1][coltoFill]);
+      connectFour(boardArray);
+      //checkVertical(rowtoFill, coltoFill, boardArray[rowtoFill-1][coltoFill]);
       //check if win
     }
     else {
@@ -237,12 +233,56 @@ function findNextRow(col) {
 }//end findNextRow()
 
 
-// call at the end of the click function when coin is dropped
-//function that puts piece on dom
 
-//once piece is drop then find coordinate
-//if cell is clicked or filled then set color
-//else check next cell
-// if have something that matches next keep going
-// if no match stop
+//===============Dan
 
+function checkFourMatch(firstCheck,secondCheck,thirdCheck,fourthCheck) {
+  if ((firstCheck !== '0') && (firstCheck === secondCheck) && (firstCheck === thirdCheck) && (firstCheck === fourthCheck)) {
+    return true;
+  }
+}
+
+function connectFour(gameArray) {
+ var boardLength = gameArray.length;
+ // loop through the whole board once not a bunch of times
+ for (var row = 0; row < boardLength; row++) {
+   for (var column = 0; column < boardLength; column++) {
+     if (row < boardLength - 3 &&
+      checkFourMatch(gameArray[row][column], gameArray[row+1][column], gameArray[row+2][column], gameArray[row+3][column])) {
+        alert("vertical check yes");
+        $('#gameBoard').off("click");
+        popUp();
+        return;     
+      }
+
+      if (column < boardLength - 3 &&
+        checkFourMatch(gameArray[row][column], gameArray[row][column+1], gameArray[row][column+2], gameArray[row][column+3])) {
+       alert("horizontal check yes");
+       $('#gameBoard').off("click");
+      // popUp();
+       return;
+        }
+     // checking down then right
+     if (row < boardLength - 3 && column < boardLength - 3 &&
+      checkFourMatch(gameArray[row][column], gameArray[row+1][column+1], gameArray[row+2][column+2], gameArray[row+3][column+3])) {
+        alert("down right check yes")
+        return;
+     }
+    //  // checking down then left
+     if (row < boardLength - 3 && column > 2 && 
+      checkFourMatch(gameArray[row][column], gameArray[row+1][column-1], gameArray[row+2][column-2], gameArray[row+3][column-3])) {
+        alert("down left check yes")
+        return;
+     }
+   }      
+ } 
+ return "no winner";
+
+}
+
+function popUp() {
+  $('#modelShadow').css('display', 'block');
+  setTimeout(function() {
+      $('#modelShadow').css('display', 'none');
+  } ,4000);
+}// end popUp()
