@@ -3,11 +3,11 @@ $(document).ready(connectFourStuff);
 function connectFourStuff() {
     gameBoardCreate(7);
     addEventListeners();
+    audio = document.getElementById("myAudio");
 }
 
 function addEventListeners() {
     $('#reset').on("click", reset);
-
 }
 
 var boardArray = [
@@ -23,8 +23,11 @@ var currentPlayer = null;
 var coordinate = [0, 0]; //dummy data
 var availableRow;
 var playerSwitch = 1;
-
-var audio = $("#myAudio");
+var audio;
+//audio should define outside document.ready
+//1 to make it gloable
+// = getElementById inside document.ready
+// if not definition inside .ready. it will find audio before DOM load.
 
 // ******************************************************************************
 //                Daniel's Code Below
@@ -69,14 +72,15 @@ function connectFour(gameArray) {
                 $('.col').off();
                 //audio.play();
                 showWinModal();
+                audio.play();
                 return;
             }
             // checking vertical for matches
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
                 $('.col').off();
-                //audio.play();
                 showWinModal();
+                audio.play();
                 return;
             }
             // checking down then right
