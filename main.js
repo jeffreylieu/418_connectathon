@@ -234,6 +234,7 @@ function showWinModal() {
 
 function reset() {
     $('.col').css('background-color', 'yellow');
+    $('[row="0"]>div').css('background-color', 'black');
     boardArray = [
         ['0', '0', '0', '0', '0', '0', '0'],
         ['0', '0', '0', '0', '0', '0', '0'],
