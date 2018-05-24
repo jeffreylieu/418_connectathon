@@ -63,7 +63,6 @@ function connectFour(gameArray) {
     // loop through all checks via if statements once per increment
     for (var row = 0; row < boardLength; row++) { // row loop
         for (var column = 0; column < boardLength; column++) {  // column loop
-            //  console.log(`row = ${row} and col = ${column}`)
             // checking horizontal for matches  --->
             if (column < boardLength - 3 &&  // 
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
@@ -109,9 +108,6 @@ function handleClick() {
     var currentRow = $(this).parent().attr('row');
     var currentCol = $(this).attr('col');
 
-    console.log('currentRow currentCol', currentRow, currentCol);
-    console.log(`row: ${currentRow}, col: ${currentCol}`);
-
     availableRow = findNextRow(currentCol);
 
     if (availableRow !== -1) {
@@ -126,7 +122,6 @@ function fillCell(rowtoFill, coltoFill) {
     //since array is less 1 row than DOM, it need add one row fro DOM & minus 1 for array
     //current array row col: rowtoFill coltoFill
     //by Jeff and Sharry
-    console.log("current array row and col ", rowtoFill, coltoFill);
     rowtoFill++;
     playerSwitch = 1 - playerSwitch;
     if (playerSwitch == 1) {
@@ -146,7 +141,6 @@ function fillCell(rowtoFill, coltoFill) {
 function findNextRow(col) {
     for (var row = 6; row >= 0; row--) {
         if (boardArray[row][col] === '0') {
-            console.log('in findNextRow row col is', row, col);
             boardArray[row][col] = "1";
             return row;
         }
