@@ -13,7 +13,7 @@ function connectFourStuff() {
 }
 
 function addEventListeners(){
-    horizontal();
+
 }
 
 
@@ -122,7 +122,6 @@ var boardArray = [
 ];
 
 function horizontal(){
-
     var x = coordinate[0];
     var y = coordinate[0];
     //remove above variables, and pass in x and y to horizontal function to make it dynamic
@@ -147,3 +146,18 @@ function horizontal(){
 // if have something that matches next keep going
 // if no match stop
 
+function vertical(){
+    var x = coordinate[0];
+    var y = coordinate[0];
+    var counter = 0;
+    for( var vertical = 0; vertical < boardArray.length; vertical++){
+        if(boardArray[x][y + vertical] === '1'){
+            counter++;
+        } else {
+            counter = 0;
+        }
+        if(counter === 4){
+            console.log('winner');
+        }
+    }
+}
