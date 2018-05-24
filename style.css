@@ -106,9 +106,9 @@ input.switch {
 
   #modelBody {
     position: fixed;
-    left: 72%;
-    top: 80%;
-    width:50%;
+    left: 50%;
+    top: 50%;
+    width: 50%;
     min-width: 50%;
     min-height: 50%;
     background-image: url(images/win.gif);

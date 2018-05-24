@@ -1,4 +1,5 @@
 $(document).ready(connectFourStuff);
+
 var boardArray = [
     ['0', '0', '0', '0', '0', '0', '0'],
     ['0', '0', '0', '0', '0', '0', '0'],
@@ -12,6 +13,27 @@ var currentPlayer = null;
 var coordinate = [0,0]; //dummy data
 var availableRow;
 var playerSwitch = 1;
+
+var resetButton = $('.reset');
+
+resetButton.on("click", function () {
+    reset();
+});
+
+function reset() {
+  alert('hi');
+  var boardArray = [
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0']
+  ];
+  gameBoardCreate(7);
+}//end reset()
+
 
 function connectFourStuff() {
   gameBoardCreate(7);
@@ -73,6 +95,7 @@ function change( switch_button ) {
         else
             switch_button.value = "Player One";
     }
+}
 
     // Jeff's playerChange function
 function playerChange() {
@@ -135,31 +158,6 @@ function horizontal(){
 // ******************************************************************************
 
 // Sharry's function for click handling
-    // function handleClick() {
-    //     var currentRow = $(this).parent().attr('row');
-    //     var currentCol = $(this).attr('col');
-    //     boardArray[currentRow][currentCol] = 'x';
-    //     console.log('boardArray', boardArray);
-    //     console.log('currentRow', currentRow);
-    //     console.log(`row: ${currentRow}, col: ${currentCol}`);
-    //     // cellEmpty = false;
-    //     //debugger;
-    //     if (currentCol == 6) {
-    //         for (var row = 6; row > 0; row--) {
-    //             var cellCheck = $("div[row=" + row + "] > div[col=" + currentCol + "]");
-    //             console.log(cellCheck.css('background-color'));
-
-    //             if (cellCheck.css('background-color') === "rgb(255, 255, 0)") {
-    //                 $("div[row=" + row + "] > div[col=" + currentCol + "]").css('background-color', 'red');
-
-    //                 return;
-    //             }
-    //         }
-    //     }
-
-    // }
-}
-
 
 function handleClick() {
 
@@ -219,6 +217,7 @@ function fillCell(rowtoFill, coltoFill) {
       boardArray[rowtoFill-1][coltoFill] = "2";
       $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'black');
       //check if win
+      connectFour(boardArray);
     }
   }//end fillCell()
 
@@ -232,8 +231,12 @@ function findNextRow(col) {
     }
 }//end findNextRow()
 
-
-
+function showWinModal() {
+    $('#modelShadow').css('display', 'block');
+    setTimeout(function() {
+        $('#modelShadow').css('display', 'none');
+    } ,4000);
+  }// end showWinModal()
 //===============Dan
 
 function checkFourMatch(firstCheck,secondCheck,thirdCheck,fourthCheck) {
@@ -249,9 +252,9 @@ function connectFour(gameArray) {
    for (var column = 0; column < boardLength; column++) {
      if (row < boardLength - 3 &&
       checkFourMatch(gameArray[row][column], gameArray[row+1][column], gameArray[row+2][column], gameArray[row+3][column])) {
-        alert("vertical check yes");
+        //alert("vertical check yes");
         $('#gameBoard').off("click");
-        popUp();
+        showWinModal();
         return;     
       }
 
@@ -259,30 +262,25 @@ function connectFour(gameArray) {
         checkFourMatch(gameArray[row][column], gameArray[row][column+1], gameArray[row][column+2], gameArray[row][column+3])) {
        alert("horizontal check yes");
        $('#gameBoard').off("click");
-      // popUp();
+       showWinModal();
        return;
         }
      // checking down then right
      if (row < boardLength - 3 && column < boardLength - 3 &&
       checkFourMatch(gameArray[row][column], gameArray[row+1][column+1], gameArray[row+2][column+2], gameArray[row+3][column+3])) {
         alert("down right check yes")
+        showWinModal();
         return;
      }
     //  // checking down then left
      if (row < boardLength - 3 && column > 2 && 
       checkFourMatch(gameArray[row][column], gameArray[row+1][column-1], gameArray[row+2][column-2], gameArray[row+3][column-3])) {
         alert("down left check yes")
+        showWinModal();
         return;
      }
    }      
  } 
  return "no winner";
+}//end connectFour(gameArray)
 
-}
-
-function popUp() {
-  $('#modelShadow').css('display', 'block');
-  setTimeout(function() {
-      $('#modelShadow').css('display', 'none');
-  } ,4000);
-}// end popUp()
