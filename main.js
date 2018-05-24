@@ -2,6 +2,7 @@ $(document).ready(connectFourStuff);
 
 function connectFourStuff() {
     gameBoardCreate(7);
+
     addEventListeners();
     audio = document.getElementById("myAudio");
 }
@@ -34,18 +35,19 @@ var audio;
 // ******************************************************************************
 
 // dynamic board creator - enter the size you want for NxN
-// by Daniel
 function gameBoardCreate(size) { // need parameter to function
     for (var row = 0; row < size + 1; row++) {
         var rowHolder = $("<div>", { // creating variable for new div
             row: row, // inside each div adding row = "row-index number"
             'class': 'row', // adding a class of row
-        })
+        });
         for (var col = 0; col < size; col++) {
             var column = $("<div>", { // creating variable for each column block div
                 col: col, // inside each tag adding col = "col index number"
                 "class": 'col', // adding class of col for each column div
-            })
+            });
+            cell = column;
+            // console.log('cell is ', cell);
             rowHolder.append(column) // appending the column to the rowHolder div
             column.click(handleClick);
         } // close column creation for loop
@@ -57,43 +59,54 @@ function gameBoardCreate(size) { // need parameter to function
 function checkFourMatch(firstCheck, secondCheck, thirdCheck, fourthCheck) {
     if ((firstCheck !== '0') && (firstCheck === secondCheck) && (firstCheck === thirdCheck) && (firstCheck === fourthCheck)) {
         return true;
-    }
-}
+    } // function to check four places 
+} // close checkFourMatch function
 
 function connectFour(gameArray) {
     var boardLength = gameArray.length;
-    // loop through the whole board once not a bunch of times
-    for (var row = 0; row < boardLength; row++) {
-        for (var column = 0; column < boardLength; column++) {
+    // loop through all checks via if statements once per increment
+    for (var row = 0; row < boardLength; row++) { // row loop
+        for (var column = 0; column < boardLength; column++) {  // column loop
             //  console.log(`row = ${row} and col = ${column}`)
-            // checking horizontal for matches
-            if (column < boardLength - 3 &&
+            // checking horizontal for matches  --->
+            if (column < boardLength - 3 &&  // 
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
-                $('.col').off();
-                //audio.play();
+
+                $(".col").off();
+
                 showWinModal();
                 audio.play();
                 return;
-            }
-            // checking vertical for matches
+            }                              // |  
+            // checking vertical for matches  |
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
-                $('.col').off();
+
+ 
+
+                $(".col").off();
+
                 showWinModal();
                 audio.play();
                 return;
             }
-            // checking down then right
+            // checking down then right  
             if (row < boardLength - 3 && column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column + 1], gameArray[row + 2][column + 2], gameArray[row + 3][column + 3])) {
-                $('.col').off();
+
+               
+
+                $(".col").off();
+
                 showWinModal();
                 return;
             }
             // checking down then left
             if (row < boardLength - 3 && column > 2 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column - 1], gameArray[row + 2][column - 2], gameArray[row + 3][column - 3])) {
-                $('.col').off();
+
+                $(".col").off();
+
                 showWinModal();
                 return;
             }
@@ -101,7 +114,6 @@ function connectFour(gameArray) {
     }
     return "no winner";
 }//end connectFour(gameArray)
-
 
 
 // ******************************************************************************
@@ -121,16 +133,17 @@ function change(switch_button) {
 }
 
 // Jeff's playerChange function
-// function playerChange() {
-//     if (currentPlayer == 'red') {
-//         currentPlayer = "black";
-//     } else {
-//         currentPlayer = "red";
-//     }
-// }
+function playerChange() {
+    if (currentPlayer == 'red') {
+    } else {
+        currentPlayer = "black";
+
+    }
+    currentPlayer = "red";
+}
+
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
-
 
 
 // ******************************************************************************
@@ -190,6 +203,7 @@ function fillCell(rowtoFill, coltoFill) {
         $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
         //check if win
         connectFour(boardArray);
+
         //checkVertical(rowtoFill, coltoFill, boardArray[rowtoFill-1][coltoFill]);
     }
     else {
@@ -197,6 +211,7 @@ function fillCell(rowtoFill, coltoFill) {
         $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'black');
         //check if win
         connectFour(boardArray);
+
     }
 }//end fillCell()
 
@@ -214,7 +229,7 @@ function showWinModal() {
     $('#modelShadow').css('display', 'block');
     setTimeout(function () {
         $('#modelShadow').css('display', 'none');
-    }, 4000);
+    }, 1000);
 }// end showWinModal()
 
 function reset() {
