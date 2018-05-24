@@ -91,19 +91,23 @@ input.switch {
     border: 2px solid white;
 }
 
-.tokenInputRow {
+[row="0"] {
+    background-color: black;
     display: flex;
     flex-flow: row wrap;
-    height: 50px;
+    height: 12%;
+    width: 100%;
 }
 
-.tokenInputCol {
-    /*background-color: none;*/
-    height: 50px;
-    width: 50px;
+[row="0"]>div {
+    background-color: black;
+    height: 100%;
+    width: 14%;
+    border: 2px solid black;
+
 }
 
-.tokenInputCol:hover {
+[row="0"]>div:hover {
     background-color: green;
 }
 
