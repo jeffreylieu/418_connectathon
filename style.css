@@ -4,6 +4,9 @@ body {
     height: 100vh;
     width: 100vw;
     background-color: black;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
 }
 /* *************************************************************** */
                 /*  all items in header below */
@@ -12,7 +15,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
     height: 15%;
     font-size: 2rem;
     color: red;
@@ -22,22 +24,14 @@ header {
 
 h2{
     height: 6vh;
+    font-size: 10vmin;
 }
 
-/*.col {*/
-    /*height: 5%;*/
-    /*width: 5%;*/
-    /*background-color: yellow;*/
-    /*border: 2px solid white;*/
-/*}*/
 
 #playerSwap .button{
     box-sizing: border-box;
-    /*display: block;*/
-    /*justify-content: flex-end;*/
     align-items: flex-end;
     clear: left;
-    /*height: 1%;*/
     height: 5vh;
     display: flex;
     justify-content: center;
@@ -72,6 +66,7 @@ input.switch {
 #gameBoard {
     height: 75vmin;
     width: 69vmin;
+
 }
 
 .row {
@@ -81,7 +76,6 @@ input.switch {
 }
 
 .col {
-    border: 1px white solid;
     height: 100%;
     width: 14%;
     float: left;
@@ -115,10 +109,6 @@ input.switch {
     width: 14%;
     border: 2px solid black;
 
-}
-
-[row="0"]>div:hover {
-    background-color: green;
 }
 
 .red {
@@ -167,5 +157,9 @@ input.switch {
 
   #reset{
       font-size: 2rem;
+      border-radius: 10%;
+      background-color: yellow;
+      color: red;
+
   }
 
