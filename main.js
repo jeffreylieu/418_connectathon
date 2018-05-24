@@ -203,7 +203,6 @@ function fillCell(rowtoFill, coltoFill) {
         $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
         //check if win
         connectFour(boardArray);
-
         //checkVertical(rowtoFill, coltoFill, boardArray[rowtoFill-1][coltoFill]);
     }
     else {
