@@ -43,7 +43,7 @@ function gameBoardCreate(size) { // need parameter to function
                 "class": 'col', // adding class of col for each column div
             })
             cell = column;
-            console.log('cell is ', cell);
+           // console.log('cell is ', cell);
             rowHolder.append(column) // appending the column to the rowHolder div
             column.click(handleClick);
         } // close column creation for loop
@@ -186,6 +186,7 @@ function fillCell(rowtoFill, coltoFill) {
         $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'red');
         //check if win
         connectFour(boardArray);
+
         //checkVertical(rowtoFill, coltoFill, boardArray[rowtoFill-1][coltoFill]);
     }
     else {
@@ -193,6 +194,7 @@ function fillCell(rowtoFill, coltoFill) {
         $("div[row=" + rowtoFill + "] > div[col=" + coltoFill + "]").css('background-color', 'black');
         //check if win
         connectFour(boardArray);
+
     }
 }//end fillCell()
 
@@ -210,7 +212,7 @@ function showWinModal() {
     $('#modelShadow').css('display', 'block');
     setTimeout(function () {
         $('#modelShadow').css('display', 'none');
-    }, 4000);
+    }, 1000);
 }// end showWinModal()
 
 function reset() {
@@ -224,4 +226,5 @@ function reset() {
       ['0', '0', '0', '0', '0', '0', '0'],
       ['0', '0', '0', '0', '0', '0', '0']
   ];
+  $('.col').on('click', handleClick);
 }//end reset()
