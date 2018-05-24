@@ -122,25 +122,25 @@ function connectFour(gameArray) {
 
 // function to change players between player one and player two
 // by Jeff
-function change(switch_button) {
-    if (switch_button.value === "Player One") {
-        switch_button.value = "Player Two";
-        // playerChange();
-    } else {
-        switch_button.value = "Player One";
-        // playerChange();
+function changePlayer(){
+    if(currentPlayer==='black'){
+        currentPlayer='red';
+    }else{
+        currentPlayer='black';
     }
 }
 
-// Jeff's playerChange function
-function playerChange() {
-    if (currentPlayer == 'red') {
-    } else {
-        currentPlayer = "black";
-
+    function change(switch_button) {
+        if (switch_button.value === "Player One") {
+            switch_button.value = "Player Two";
+            // playerChange();
+        } else {
+            switch_button.value = "Player One";
+            // playerChange();
+        }
     }
-    currentPlayer = "red";
-}
+
+
 
 // call at the end of the click function when coin is dropped
 //function that puts piece on dom
