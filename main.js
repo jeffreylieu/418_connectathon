@@ -65,6 +65,7 @@ function connectFour(gameArray) {
                 return;
             } // end horizontal match check if statement
             // checking vertical for matches
+
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
                 $(".col").off();
@@ -102,13 +103,10 @@ function handleClick() {
     var currentRow = $(this).parent().attr('row');
     var currentCol = $(this).attr('col');
     availableRow = findNextRow(currentCol);
-    if (availableRow !== -1) {
+    if (availableRow !== null) {
         fillCell(availableRow, currentCol);
-    } else {
-        alert('no space');
     }
 }//end handleClick()
-
 
 function fillCell(rowtoFill, coltoFill) {
     //since array is less 1 row than DOM, it need add one row fro DOM & minus 1 for array
@@ -137,7 +135,7 @@ function findNextRow(col) {
             return row;
         }
     }
-    alert('no space!');
+    return null;
 }//end findNextRow()
 
 function showWinModal() {
