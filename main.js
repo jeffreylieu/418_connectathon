@@ -50,13 +50,6 @@ function gameBoardCreate(size) { // need parameter to function
     } // close row creation for loop
 } // close gameBoardCreate function
 
-
-function checkFourMatch(firstCheck, secondCheck, thirdCheck, fourthCheck) {
-    if ((firstCheck !== '0') && (firstCheck === secondCheck) && (firstCheck === thirdCheck) && (firstCheck === fourthCheck)) {
-        return true;
-    } // function to check four places 
-} // close checkFourMatch function
-
 // by Jeff and Daniel
 function connectFour(gameArray) {
     var boardLength = gameArray.length;
@@ -66,50 +59,49 @@ function connectFour(gameArray) {
             // checking horizontal for matches  --->
             if (column < boardLength - 3 &&  // 
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
-
                 $(".col").off();
-
                 showWinModal();
                 audio.play();
                 return;
-            }                              // |  
-            // checking vertical for matches  |
+            } // end horizontal match check if statement
+            // checking vertical for matches
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
                 $(".col").off();
                 showWinModal();
                 audio.play();
                 return;
-            }
+            } // end vertical match check if statement
             // checking down then right  
             if (row < boardLength - 3 && column < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column + 1], gameArray[row + 2][column + 2], gameArray[row + 3][column + 3])) {
                 $(".col").off();
                 showWinModal();
                 return;
-            }
+            } // end down right if statement
             // checking down then left
             if (row < boardLength - 3 && column > 2 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column - 1], gameArray[row + 2][column - 2], gameArray[row + 3][column - 3])) {
                 $(".col").off();
                 showWinModal();
                 return;
-            }
-        }
-    }
-    return "no winner";
+            }  // end down left if statement
+        } // end column for loop
+    }  // end row for loop 
+    return;  // kicking out of the function if nothing is matched
 }//end connectFour(gameArray)
 
+function checkFourMatch(firstCheck, secondCheck, thirdCheck, fourthCheck) {
+    if ((firstCheck !== '0') && (firstCheck === secondCheck) && (firstCheck === thirdCheck) && (firstCheck === fourthCheck)) {
+        return true;
+    } // function to check four places 
+} // close checkFourMatch function
 
 // Sharry's function for click handling
-
 function handleClick() {
-
     var currentRow = $(this).parent().attr('row');
     var currentCol = $(this).attr('col');
-
     availableRow = findNextRow(currentCol);
-
     if (availableRow !== -1) {
         fillCell(availableRow, currentCol);
     } else {
@@ -168,5 +160,4 @@ function reset() {
         ['0', '0', '0', '0', '0', '0', '0']
     ];
     $('.col').on('click', handleClick);
-
 }//end reset()
