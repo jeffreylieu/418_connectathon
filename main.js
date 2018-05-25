@@ -20,7 +20,6 @@ var boardArray = [
     ['0', '0', '0', '0', '0', '0', '0']
 ];
 var currentPlayer = null;
-var coordinate = [0, 0]; //dummy data
 var availableRow;
 var playerSwitch = 1;
 var audio;
@@ -57,7 +56,7 @@ function checkFourMatch(firstCheck, secondCheck, thirdCheck, fourthCheck) {
     } // function to check four places 
 } // close checkFourMatch function
 
-// by Jeff and Daniel
+// by Jeff, Sharry and Daniel
 function connectFour(gameArray) {
     var boardLength = gameArray.length;
     // loop through all checks via if statements once per increment
@@ -65,16 +64,14 @@ function connectFour(gameArray) {
         for (var column = 0; column < boardLength; column++) {  // column loop
             //  console.log(`row = ${row} and col = ${column}`)
             // checking horizontal for matches  --->
-            if (column < boardLength - 3 &&  // 
+            if (column < boardLength - 3 &&  // due to errors from undefined when going outside of the box it will stop before that happens
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
-
                 $(".col").off();
-
                 showWinModal();
                 audio.play();
                 return;
-            }                              // |  
-            // checking vertical for matches  |
+            }  
+            // checking vertical for matches  
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
                 $(".col").off();
@@ -98,29 +95,21 @@ function connectFour(gameArray) {
             }
         }
     }
-    return "no winner";
+    return;
 }//end connectFour(gameArray)
 
 
 // Sharry's function for click handling
-
 function handleClick() {
-
     var currentRow = $(this).parent().attr('row');
     var currentCol = $(this).attr('col');
-
-    console.log('currentRow currentCol', currentRow, currentCol);
-    console.log(`row: ${currentRow}, col: ${currentCol}`);
-
     availableRow = findNextRow(currentCol);
-
     if (availableRow !== -1) {
         fillCell(availableRow, currentCol);
     } else {
         alert('no space');
     }
 }//end handleClick()
-
 
 function fillCell(rowtoFill, coltoFill) {
     //since array is less 1 row than DOM, it need add one row fro DOM & minus 1 for array
@@ -174,5 +163,4 @@ function reset() {
         ['0', '0', '0', '0', '0', '0', '0']
     ];
     $('.col').on('click', handleClick);
-
 }//end reset()

@@ -6,8 +6,8 @@ body {
     background-color: black;
     background-size: 100%;
     background-repeat: no-repeat;
-
 }
+
 /* *************************************************************** */
                 /*  all items in header below */
 /* *************************************************************** */
@@ -19,7 +19,6 @@ header {
     font-size: 2rem;
     color: red;
     font-family: 'Russo One', sans-serif;
-
 }
 
 h2{
@@ -36,7 +35,6 @@ h2{
     display: flex;
     justify-content: center;
     margin-bottom: 3%;
-
 }
 
 
@@ -50,23 +48,19 @@ input {
 input.switch {
     background-color: black;
     color: red;
-
 }
 
 /* *************************************************************** */
             /*  all items in game board below */
 /* *************************************************************** */
  .container {
-    /*height: 72%;*/
     display: flex;
     justify-content: center;
-
 }
 
 #gameBoard {
     height: 75vmin;
     width: 69vmin;
-
 }
 
 .row {
@@ -86,6 +80,7 @@ input.switch {
     animation: drop 1s;
 
 }
+
 @keyframes drop {
     from {
         transform: translate3d(0, -80vmin, 0);
@@ -108,7 +103,6 @@ input.switch {
     height: 100%;
     width: 14%;
     border: 2px solid black;
-
 }
 
 .red {
@@ -143,14 +137,12 @@ input.switch {
     background-image: url(images/win.gif);
     background-repeat: no-repeat;
     transform: translate(-50%, -50%);
-
   }
 
   .button{
       height: 5vh;
       display: flex;
       justify-content: center;
-
   }
 
   #reset{
@@ -158,6 +150,5 @@ input.switch {
       border-radius: 10%;
       background-color: yellow;
       color: red;
-
   }
 
