@@ -72,7 +72,7 @@ function connectFour(gameArray) {
                 showWinModal();
                 audio.play();
                 return;
-            }                              // |  
+            }
             // checking vertical for matches  |
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
@@ -110,10 +110,8 @@ function handleClick() {
 
     availableRow = findNextRow(currentCol);
 
-    if (availableRow !== -1) {
+    if (availableRow !== null) {
         fillCell(availableRow, currentCol);
-    } else {
-        alert('no space');
     }
 }//end handleClick()
 
@@ -145,7 +143,8 @@ function findNextRow(col) {
             return row;
         }
     }
-    alert('no space!');
+
+    return null;
 }//end findNextRow()
 
 function showWinModal() {
