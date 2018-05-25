@@ -2,39 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
     <title>Connect Four</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="main.js"></script>
-    <title>Connect Four</title>
-
-
 </head>
-<body>
-
+<body background="http://nypdecider.files.wordpress.com/2018/05/cobra.jpg">
     <header>
         <div>
             <h2>Connect Four</h2>
         </div>
-        <div id="playerSwap">
-            <input type="button" value="Player One" onclick="return change(this);" />
-        </div>
     </header>
+    <audio id="myAudio">
+        <source src="applause.mp3" type="audio/mpeg">
+    </audio>
+    <div id='modelShadow'>
+        <div id='modelBody'> </div>
+    </div>
     <div class="container">
         <div id="gameBoard">
-            <!-- Taken out due to errors not deleted in case we need it back -->
-            <!--  -Daniel     -->
-            <!-- <div class="tokenInputRow">
-                <div token="0" class="tokenInputCol"></div>
-                <div token="1" class="tokenInputCol"></div>
-                <div token="2" class="tokenInputCol"></div>
-                <div token="3" class="tokenInputCol"></div>
-                <div token="4" class="tokenInputCol"></div>
-                <div token="5" class="tokenInputCol"></div>
-                <div token="6" class="tokenInputCol"></div>
-            </div> -->
         </div>
     </div>
-
+    <div class="button">
+        <button id='reset'>Reset Game</button>
+    </div>
 </body>
 </html>
