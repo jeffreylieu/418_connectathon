@@ -8,8 +8,12 @@ function connectFourStuff() {
 
 function addEventListeners() {
     $('#reset').on("click", reset);
+    $('#playerSwap').on('click', changeStartPlayer);
 }
 
+function changeStartPlayer() {
+    alert('hi');
+}
 var boardArray = [
     ['0', '0', '0', '0', '0', '0', '0'],
     ['0', '0', '0', '0', '0', '0', '0'],
@@ -66,18 +70,18 @@ function connectFour(gameArray) {
     // loop through all checks via if statements once per increment
     for (var row = 0; row < boardLength; row++) { // row loop
         for (var column = 0; column < boardLength; column++) {  // column loop
-            //  console.log(`row = ${row} and col = ${column}`)
-            // checking horizontal for matches  --->
+            console.log(`row = ${row} and col = ${column}`)
+            // checking horizontal if has 4 matches  --->  
+            // boardlength = 4
             if (column < boardLength - 3 &&  // 
                 checkFourMatch(gameArray[row][column], gameArray[row][column + 1], gameArray[row][column + 2], gameArray[row][column + 3])) {
 
-                $(".col").off();
-
+                $(".col").off(); 
                 showWinModal();
                 audio.play();
                 return;
             }                              // |  
-            // checking vertical for matches  |
+            // checking vertical if has 4 matches  |
             if (row < boardLength - 3 &&
                 checkFourMatch(gameArray[row][column], gameArray[row + 1][column], gameArray[row + 2][column], gameArray[row + 3][column])) {
                 $(".col").off();
@@ -142,7 +146,7 @@ function handleClick() {
 
     console.log('currentRow currentCol', currentRow, currentCol);
     console.log(`row: ${currentRow}, col: ${currentCol}`);
-
+debugger
     availableRow = findNextRow(currentCol);
 
     if (availableRow !== -1) {
